@@ -1,10 +1,12 @@
-export const Login = (input: string) => {
+import { api } from "../api";
 
-    const myEmail = 'Kaynanfelipe28@hotmail.com'
+export const login = async (email: string, password: string): Promise<boolean> => {
 
-        if(input === myEmail){
-            alert(`Seja Bem vindo ${input}`)
+    const data: any = await api
+
+    if(email === data.email && password === data.password){
+        return true
     }
-        return ('E-mail Inválido');
 
+    return false
 }

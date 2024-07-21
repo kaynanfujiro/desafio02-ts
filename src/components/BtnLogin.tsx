@@ -2,8 +2,8 @@ import { MouseEventHandler } from 'react';
 import { Button } from '@chakra-ui/react';
 
 interface botao {
-	children?: string;
-	onClick?: MouseEventHandler;
+	children?: string
+	onClick: MouseEventHandler
 }
 
 export const BtnLogin = ({ children, onClick }: botao) => {

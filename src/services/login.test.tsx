@@ -1,22 +1,35 @@
-import { Login } from "./login"
+import { login } from "./login";
 
-describe('login', () => {
+const mockSetIsLoggedIn = jest.fn()
+const mockNavigate = jest.fn()
 
-    const mockAlert = jest.fn()
-    window.alert = mockAlert
-
-    it('Deve exibir um alert com boas vindas apenas para o meu e-mail', () => {
-        const myEmail = 'Kaynanfelipe@hotmail.com'
-        
-        Login(myEmail)
-        expect(mockAlert).toHaveBeenCalledWith('Bem vindo(a)!')
+jest.mock('react', () => ({
+    ...jest.requireActual('react'),
+    useContext: () => ({
+        setIsLoggedIn: mockSetIsLoggedIn
     })
+}))
 
-    it('Deve exibir um alert de erro para um e-mail diferente do meu', () => {
-        const mockEmail = 'emaildiferente@hotmail.com'
+jest.mock('react-router-dom', () => ({
+    ...jest.requireActual('react-router-dom') as any,
+    useNavigate: () => mockNavigate
+}))
+
+describe('Login', () => {
+
+    const mockEmail = 'Kaynanfelipe28@hotmail.com'
+    const mockPassword = '123456'
+
+    it('Deve exibir um alert com boas vindas caso o e-mail e senha sejam válidos', async() => {
         
-        Login(mockEmail)
-        expect(mockAlert).toHaveBeenCalledWith('E-mail inválido!')
+    const response = await login(mockEmail, mockPassword)
+    expect(response).toBeTruthy()
+    // expect(mockNavigate).toHaveBeenCalledWith('/1')
     })
-
-})
+        
+    it('Deve exibir um erro caso o email seja inválido', async() => {
+    const response = await login('email@invalido.com', 'senhaInválida')
+    expect(response).toBeFalsy()
+    // expect(mockNavigate).not.toHaveBeenCalledWith()
+    })
+    })
