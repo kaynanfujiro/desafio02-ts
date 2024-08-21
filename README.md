@@ -3,6 +3,11 @@ desenvolvido por [Nathally Souza](https://github.com/nathyts)
 
 #### Projeto desenvolvido com React
 
+- Realizar login utilizando:
+
+  Email: Teste@hotmail.com
+  Senha: 123456
+
 ### Tecnologias
 - Typescript
 

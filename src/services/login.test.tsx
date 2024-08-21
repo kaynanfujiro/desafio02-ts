@@ -17,7 +17,7 @@ jest.mock('react-router-dom', () => ({
 
 describe('Login', () => {
 
-    const mockEmail = 'Kaynanfelipe28@hotmail.com'
+    const mockEmail = 'Teste@hotmail.com'
     const mockPassword = '123456'
 
     it('Deve exibir um alert com boas vindas caso o e-mail e senha sejam válidos', async() => {
